@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cover Template for Bootstrap</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/bootstrap.min.css}" />
+    <link href="../static/cover.css" th:href="@{/cover.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Managing Home Budget Web App</h3>
+                    <nav class="nav nav-masthead">
+                        <a class="nav-link active" href="/">Home</a>
+                        <a class="nav-link" href="/display?type=Income">Display Incomes</a>
+                        <a class="nav-link" href="/display?type=Expense">Display Expenses</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="inner cover">
+                <h1 class="cover-heading" th:text="${tableTitle}">Table title.</h1>
+                <p class="lead">
+                    <table class="table table-hover ">
+                        <!--Table head-->
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <!--Table body-->
+                        <tbody>
+                        <tr th:each="homeBudget : ${homeBudgets}" th:object="${homeBudget}">
+                            <td th:text="*{id}"></td>
+                            <td th:text="*{type}"></td>
+                            <td th:text="*{description}"></td>
+                            <td th:text="*{amount}"></td>
+                            <td th:text="*{date}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Add or display your home budget online</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script th:src="@{../static/ie10-viewport-bug-workaround.js}"></script>
+</body>
+</html>
